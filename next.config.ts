@@ -1,7 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: '/api/users',
+        destination: 'https://api-test-ouk9.onrender.com/users',
+      },
+      {
+        source: '/api/user',
+        destination: 'https://api-test-ouk9.onrender.com/user',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

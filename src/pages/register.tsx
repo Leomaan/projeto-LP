@@ -2,7 +2,7 @@ import "../app/globals.css";
 import { useState } from 'react';
 
 export default function Register() {
-  const [name, setName] = useState(''); // Estado para armazenar o nome
+  const [name, setName] = useState(''); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -35,7 +35,7 @@ export default function Register() {
       <div className="bg-white shadow-lg rounded-lg w-full max-w-md p-8 flex flex-col space-y-4">
         <h1 className="text-3xl font-bold">Criar Conta</h1>
         <form onSubmit={handleRegister} className="flex flex-col space-y-4">
-          {/* Campo de Nome */}
+
           <div className="flex flex-col space-y-2">
             <label className="text-sm font-semibold" htmlFor="name">Nome</label>
             <input
@@ -49,7 +49,6 @@ export default function Register() {
             />
           </div>
 
-          {/* Campo de E-mail */}
           <div className="flex flex-col space-y-2">
             <label className="text-sm font-semibold" htmlFor="email">E-mail</label>
             <input

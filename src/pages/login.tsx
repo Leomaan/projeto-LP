@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import "../app/globals.css";
+import Link from 'next/link';
 
 interface User {
   id: string;
@@ -87,7 +88,7 @@ export default function Login() {
         </form>
 
         <p className="text-sm text-center text-gray-500">
-          Não possui credenciamento? <a href="#" className="text-red-500 font-bold">CRIAR CONTA</a>
+          Não possui credenciamento? <Link href="/register" className="text-red-500 font-bold">CRIAR CONTA</Link>
         </p>
       </div>
     </div>

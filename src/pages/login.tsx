@@ -13,18 +13,33 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validatePassword = (password: string) => {
+    return /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
+  };
+
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    if (!validateEmail(email)) {
+      setErrorMessage('E-mail inválido.');
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setErrorMessage('A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula e um número.');
+      return;
+    }
+
     try {
-    
       const response = await fetch('/api/users');
-      if(!response.ok){
-        console.log(response.status)
+      if (!response.ok) {
+        console.log(response.status);
       }
-
-      const users: User[] = await response.json(); 
-
+      const users: User[] = await response.json();
       const user = users.find((user: User) => user.email === email && user.password === password);
 
       if (user) {

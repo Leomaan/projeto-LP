@@ -5,35 +5,16 @@ import { useRouter } from 'next/router';
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
-  const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
 
-  const validatePassword = (password: string) => {
-    return /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
-  };
-  
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    if (!validateEmail(email)) {
-      setErrorMessage('E-mail inválido.');
-      return;
-    }
-
-    if (!validatePassword(password)) {
-      setErrorMessage('A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula e um número.');
-      return;
-    }
 
     alert(`Registrando com: ${email}, ${password}`);
 
     router.push('/login');
   };
-
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
@@ -65,10 +46,6 @@ export default function Register() {
               required
             />
           </div>
-
-          {errorMessage && (
-            <p className="text-red-500 text-sm">{errorMessage}</p>
-          )}
 
           <button type="submit" className="bg-red-500 text-white font-bold py-2 rounded-md hover:bg-red-600 transition">
             Registrar
